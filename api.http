@@ -1,0 +1,38 @@
+GET http://172.16.168.1:3000/events
+
+###
+
+# @name createEvent
+POST http://172.16.168.1:3000/events
+Content-Type: application/json
+
+{
+    "name": "Feira do rolo",
+    "description": "praça do centro",
+    "date": "2024-06-11 12:00:03.497",
+    "price": 100
+}
+
+###
+
+@eventId = {{ createEvent.response.body.id }}
+
+###
+
+GET http://172.16.168.1:3000/events/{{ eventId }}
+
+###
+
+PATCH http://172.16.168.1:3000/events/{{ eventId }}
+Content-Type: application/json
+
+{
+    "name": "Feira do rolo",
+    "description": "praça do centro",
+    "date": "2024-06-11 12:00:03.497",
+    "price": 100
+}
+
+###
+
+DELETE http://172.16.168.1:3000/events/{{ eventId }}
