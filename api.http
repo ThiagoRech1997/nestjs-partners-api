@@ -36,3 +36,21 @@ Content-Type: application/json
 ###
 
 DELETE http://172.16.168.1:3000/events/{{ eventId }}
+
+###
+
+GET http://172.16.168.1:3000/events/{{ eventId }}/spots
+
+###
+
+# @name createSpot
+POST http://172.16.168.1:3000/events/{{ eventId }}/spots
+Content-Type: application/json
+
+{
+    "name": "A1"
+}
+
+###
+
+@spotId = {{ createSpot.response.body.id }}

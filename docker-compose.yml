@@ -1,6 +1,22 @@
 version: '3.8'
 
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: partners-api
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/hom/node/app
+      - ./dist:/hom/node/app/dist
+    depends_on:
+      - db
+    restart: unless-stopped
+    networks:
+      - partners-network
+
   db:
     image: postgres:13.3
     container_name: partners-api-db
