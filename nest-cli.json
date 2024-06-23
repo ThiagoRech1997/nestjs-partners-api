@@ -1,8 +1,50 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/patrner1/src",
   "compilerOptions": {
-    "deleteOutDir": true
-  }
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/patrner1/tsconfig.app.json"
+  },
+  "projects": {
+    "core": {
+      "type": "library",
+      "root": "libs/core",
+      "entryFile": "index",
+      "sourceRoot": "libs/core/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/core/tsconfig.lib.json"
+      }
+    },
+    "nestjs-partners-api": {
+      "type": "application",
+      "root": "apps/nestjs-partners-api",
+      "entryFile": "main",
+      "sourceRoot": "apps/nestjs-partners-api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/nestjs-partners-api/tsconfig.app.json"
+      }
+    },
+    "patrner1": {
+      "type": "application",
+      "root": "apps/patrner1",
+      "entryFile": "main",
+      "sourceRoot": "apps/patrner1/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/patrner1/tsconfig.app.json"
+      }
+    },
+    "patrner2": {
+      "type": "application",
+      "root": "apps/patrner2",
+      "entryFile": "main",
+      "sourceRoot": "apps/patrner2/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/patrner2/tsconfig.app.json"
+      }
+    }
+  },
+  "monorepo": true,
+  "root": "apps/patrner1"
 }

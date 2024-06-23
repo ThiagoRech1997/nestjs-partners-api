@@ -1,14 +1,14 @@
-GET http://172.16.168.1:3000/events
+GET http://172.16.168.1:3001/events
 
 ###
 
 # @name createEvent
-POST http://172.16.168.1:3000/events
+POST http://172.16.168.1:3001/events
 Content-Type: application/json
 
 {
-    "name": "Feira do rolo",
-    "description": "praça do centro",
+    "name": "Show de rock",
+    "description": "AV. Paulista",
     "date": "2024-06-11 12:00:03.497",
     "price": 100
 }
@@ -19,11 +19,11 @@ Content-Type: application/json
 
 ###
 
-GET http://172.16.168.1:3000/events/{{ eventId }}
+GET http://172.16.168.1:3001/events/{{ eventId }}
 
 ###
 
-PATCH http://172.16.168.1:3000/events/{{ eventId }}
+PATCH http://172.16.168.1:3001/events/{{ eventId }}
 Content-Type: application/json
 
 {
@@ -35,22 +35,34 @@ Content-Type: application/json
 
 ###
 
-DELETE http://172.16.168.1:3000/events/{{ eventId }}
+DELETE http://172.16.168.1:3001/events/{{ eventId }}
 
 ###
 
-GET http://172.16.168.1:3000/events/{{ eventId }}/spots
+GET http://172.16.168.1:3001/events/{{ eventId }}/spots
 
 ###
 
 # @name createSpot
-POST http://172.16.168.1:3000/events/{{ eventId }}/spots
+POST http://172.16.168.1:3001/events/{{ eventId }}/spots
 Content-Type: application/json
 
 {
-    "name": "A1"
+    "name": "A43444"
 }
 
 ###
 
 @spotId = {{ createSpot.response.body.id }}
+@spotName = {{ createSpot.response.body.name }}
+
+###
+
+POST http://172.16.168.1:3001/events/{{ eventId }}/reserve
+Content-Type: application/json
+
+{
+    "spots": ["{{ spotName }}"],
+    "ticket_kind": "FULL",
+    "email": "fulano@gmail.com"
+}
