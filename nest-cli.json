@@ -1,11 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/patrner1/src",
+  "sourceRoot": "apps/nestjs-partners-api/src",
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true,
-    "tsConfigPath": "apps/patrner1/tsconfig.app.json"
+    "tsConfigPath": "apps/nestjs-partners-api/tsconfig.app.json"
   },
   "projects": {
     "core": {
@@ -46,5 +46,5 @@
     }
   },
   "monorepo": true,
-  "root": "apps/patrner1"
+  "root": "apps/nestjs-partners-api"
 }
